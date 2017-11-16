@@ -1,23 +1,27 @@
 <template>
   <div>
     <h1>Digger</h1>
+    <section class='release' v-if="release">
+      <h1>Title: {{release.title}}</h1>
+      <h1>Year: {{release.year}}</h1>
+      <h1>Artist: {{release.artists[0].name}}</h1>
+    </section>
   </div>
 </template>
 
 <script>
 import { getRandomDiscogsRelease } from '../../api'
 export default {
-  name: 'hello',
+  name: 'RandomPage',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js PWA'
+      release: null
     }
   },
   created () {
-    console.log('woo')
     getRandomDiscogsRelease()
       .then(release => {
-        console.log(release)
+        this.release = release
       })
   }
 }
