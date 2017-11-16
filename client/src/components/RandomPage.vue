@@ -1,15 +1,17 @@
 <template>
-  <div>
+  <div v-if="release">
     <h1>Digger</h1>
-    <section class='release' v-if="release">
+    <section class='release'>
       <h1>Title: {{release.title}}</h1>
       <h1>Year: {{release.year}}</h1>
       <h1>Artist: {{release.artists[0].name}}</h1>
     </section>
+    <tracklist :tracks="release.tracklist"></tracklist>
   </div>
 </template>
 
 <script>
+import TracklistComponent from './tinyComponents/TracklistComponent'
 import { getRandomDiscogsRelease } from '../../api'
 export default {
   name: 'RandomPage',
@@ -17,6 +19,9 @@ export default {
     return {
       release: null
     }
+  },
+  components: {
+    tracklist: TracklistComponent
   },
   created () {
     getRandomDiscogsRelease()
