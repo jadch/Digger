@@ -6,6 +6,7 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const index = require('./routes/index')
+const cors = require('cors')
 
 const app = express()
 
@@ -13,6 +14,14 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+if (app.get('env') === 'development') {
+  app.use(
+    cors({
+      origin: 'http://localhost:8080'
+    })
+  )
+}
 
 app.use('/api', index)
 
