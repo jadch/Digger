@@ -8,6 +8,7 @@ router.get('/', function (req, res, next) {
   res.json({all: 'good'})
 })
 
+// Get a Discogs master release, given ID
 router.get('/release/:id', (req, res, next) => {
   let id = req.params.id.toString()
   getDiscogsRelease(id)
