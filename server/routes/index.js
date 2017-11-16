@@ -1,9 +1,22 @@
-var express = require('express');
-var router = express.Router();
+import { getRandomDiscogsRelease } from '../AppLogic'
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const express = require('express')
+const router = express.Router()
 
-module.exports = router;
+// Home Page
+router.get('/', function (req, res, next) {
+  res.json({all: 'good'})
+})
+
+// Random Discogs release page
+router.get('/random', (req, res, next) => {
+  getRandomDiscogsRelease()
+    .then(response => {
+      res.json(response)
+    })
+    .catch(error => {
+      console.error('Error fetching a random release, ', error)
+    })
+})
+
+module.exports = router
