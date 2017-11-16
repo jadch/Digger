@@ -1,4 +1,4 @@
-import { getRandomDiscogsRelease } from '../AppLogic'
+import { getRandomDiscogsRelease, getDiscogsRelease } from '../AppLogic'
 
 const express = require('express')
 const router = express.Router()
@@ -6,6 +6,17 @@ const router = express.Router()
 // Home Page
 router.get('/', function (req, res, next) {
   res.json({all: 'good'})
+})
+
+router.get('/release/:id', (req, res, next) => {
+  let id = req.params.id.toString()
+  getDiscogsRelease(id)
+    .then(response => {
+      res.json(response)
+    })
+    .catch(error => {
+      console.error('Error fetching release, ', error)
+    })
 })
 
 // Random Discogs release page
