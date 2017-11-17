@@ -21,11 +21,9 @@ export default {
 
 <style scoped>
 #tracklist {
-  width: 50vw;
   border-radius: 10px;
   background-color: #e4e3e3;
-}
-h1 {
-
+  text-align: center;
+  padding: 10px 30px;
 }
 </style>

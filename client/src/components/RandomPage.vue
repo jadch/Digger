@@ -1,17 +1,21 @@
 <template>
-  <div v-if="release" id='random'>
+  <div id='random'>
     <h1>Digger</h1>
-    <section class='release'>
-      <h2>Title: {{release.title}}</h2>
-      <h2>Year: {{release.year}}</h2>
-      <h2>Artist: {{release.artists[0].name}}</h2>
-    </section>
-    <tracklist :tracks="release.tracklist"></tracklist>
+    <div v-if="release" class='main'>
+      <section class='release'>
+        <h2>Title: {{release.title}}</h2>
+        <h2>Year: {{release.year}}</h2>
+        <h2>Artist: {{release.artists[0].name}}</h2>
+        <styles :styles="release.styles"></styles>
+      </section>
+      <tracklist :tracks="release.tracklist"></tracklist>
+    </div>
   </div>
 </template>
 
 <script>
 import TracklistComponent from './tinyComponents/TracklistComponent'
+import StylesComponent from './tinyComponents/StylesComponent'
 import { getRandomDiscogsRelease } from '../../api'
 export default {
   name: 'RandomPage',
@@ -21,7 +25,8 @@ export default {
     }
   },
   components: {
-    tracklist: TracklistComponent
+    tracklist: TracklistComponent,
+    styles: StylesComponent
   },
   created () {
     getRandomDiscogsRelease()
@@ -40,6 +45,11 @@ export default {
   flex-direction: column;
   align-items: center;
   background-color: #f9f9f9;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 h1 {
   font-size: 3em;
