@@ -1,10 +1,10 @@
 <template>
-  <div v-if="release">
+  <div v-if="release" id='random'>
     <h1>Digger</h1>
     <section class='release'>
-      <h1>Title: {{release.title}}</h1>
-      <h1>Year: {{release.year}}</h1>
-      <h1>Artist: {{release.artists[0].name}}</h1>
+      <h2>Title: {{release.title}}</h2>
+      <h2>Year: {{release.year}}</h2>
+      <h2>Artist: {{release.artists[0].name}}</h2>
     </section>
     <tracklist :tracks="release.tracklist"></tracklist>
   </div>
@@ -33,7 +33,15 @@ export default {
 </script>
 
 <style scoped>
+#random {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+}
 h1 {
-  font-weight: normal;
+  font-size: 3em;
 }
 </style>
