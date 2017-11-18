@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import RandomPage from '@/components/RandomPage'
+import Digger from '@/components/Digger'
 
 Vue.use(Router)
 
@@ -9,13 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
-    },
-    {
-      path: '/randomize',
-      name: 'RandomPage',
-      component: RandomPage
+      name: 'Digger',
+      component: Digger
     }
   ]
 })

@@ -18,7 +18,7 @@ import TracklistComponent from './tinyComponents/TracklistComponent'
 import StylesComponent from './tinyComponents/StylesComponent'
 import { getRandomDiscogsRelease } from '../../api'
 export default {
-  name: 'RandomPage',
+  name: 'Digger',
   data () {
     return {
       release: null
