@@ -10,28 +10,35 @@
       </section>
       <tracklist :tracks="release.tracklist"></tracklist>
     </div>
+    <ytvideos v-if="videos" :videos="videos"></ytvideos>
   </div>
 </template>
 
 <script>
 import TracklistComponent from './tinyComponents/TracklistComponent'
 import StylesComponent from './tinyComponents/StylesComponent'
+import YoutubeComponent from './tinyComponents/YoutubeComponent'
 import { getRandomDiscogsRelease } from '../../api'
 export default {
   name: 'Digger',
   data () {
     return {
-      release: null
+      release: null,
+      videos: null
     }
   },
   components: {
     tracklist: TracklistComponent,
-    styles: StylesComponent
+    styles: StylesComponent,
+    ytvideos: YoutubeComponent
   },
   created () {
     getRandomDiscogsRelease()
       .then(release => {
         this.release = release
+        if ("videos" in release) {
+          this.videos = release.videos
+        }
       })
   }
 }
