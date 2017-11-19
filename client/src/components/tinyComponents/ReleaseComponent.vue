@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
  .release {
-   background-color: #e8e8e8;
+   background-color: #d1ddea;
    border-radius: 10px;
    padding: 30px 50px;
    text-align: center;

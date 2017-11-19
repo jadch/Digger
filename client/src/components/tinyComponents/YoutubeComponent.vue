@@ -1,8 +1,10 @@
 <template>
   <div id='videos'>
-    <h1>Videos</h1>
-    <section class='videos' v-for="url in urls" :key="url">
-      <iframe width="420" height="315" :src="url"></iframe>
+    <iframe width="420" height="315" :src="currentURL"></iframe>    
+    <section class='player' >
+      <p v-for="video in videos" :key="video.uri">
+        {{video.title}}
+      </p>
     </section>
   </div>
 </template>
@@ -10,6 +12,11 @@
 <script>
 export default {
   name: 'YoutubeComponent',
+  data () {
+    return {
+      index: 0
+    }
+  },
   props: ['videos'],
   computed: {
     urls: function () {
@@ -17,6 +24,9 @@ export default {
         let ID = video.uri.slice(video.uri.indexOf('?v=') + 3)
         return 'https://www.youtube.com/embed/' + ID
       })
+    },
+    currentURL: function () {
+      return this.urls[this.index]
     }
   }
 }
@@ -26,5 +36,10 @@ export default {
 #videos {
   text-align: center;
   padding: 10px 30px;
+  display: flex;
+  flex-direction: row;
+}
+.player {
+  text-align: start;
 }
 </style>

@@ -1,11 +1,12 @@
 <template>
   <div id='random'>
     <h1>Digger</h1>
+    <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
+    <novideo v-if="release && !videos" class='no-video'></novideo>
     <div v-if="release" class='main'>
       <releasewidget :release="release" class='release'></releasewidget>
       <tracklist :tracks="release.tracklist" class='tracklist'></tracklist>
     </div>
-    <ytvideos v-if="videos" :videos="videos"></ytvideos>
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 import ReleaseComponent from './tinyComponents/ReleaseComponent'
 import TracklistComponent from './tinyComponents/TracklistComponent'
 import YoutubeComponent from './tinyComponents/YoutubeComponent'
+import NoVideo from './tinyComponents/NoVideo'
 import { getRandomDiscogsRelease } from '../../api'
 export default {
   name: 'Digger',
@@ -25,7 +27,8 @@ export default {
   components: {
     tracklist: TracklistComponent,
     ytvideos: YoutubeComponent,
-    releasewidget: ReleaseComponent
+    releasewidget: ReleaseComponent,
+    novideo: NoVideo
   },
   created () {
     getRandomDiscogsRelease()
@@ -56,6 +59,9 @@ export default {
 .release {
   margin: 0px 50px;
   height: fit-content;
+}
+.videos {
+  margin: 50px 0px;
 }
 h1 {
   font-size: 3em;
