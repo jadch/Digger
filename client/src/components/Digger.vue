@@ -2,12 +2,7 @@
   <div id='random'>
     <h1>Digger</h1>
     <div v-if="release" class='main'>
-      <section class='release'>
-        <h2>Title: {{release.title}}</h2>
-        <h2>Year: {{release.year}}</h2>
-        <h2>Artist: {{release.artists[0].name}}</h2>
-        <styles :styles="release.styles"></styles>
-      </section>
+      <releasewidget :release="release"></releasewidget>
       <tracklist :tracks="release.tracklist"></tracklist>
     </div>
     <ytvideos v-if="videos" :videos="videos"></ytvideos>
@@ -15,8 +10,8 @@
 </template>
 
 <script>
+import ReleaseComponent from './tinyComponents/ReleaseComponent'
 import TracklistComponent from './tinyComponents/TracklistComponent'
-import StylesComponent from './tinyComponents/StylesComponent'
 import YoutubeComponent from './tinyComponents/YoutubeComponent'
 import { getRandomDiscogsRelease } from '../../api'
 export default {
@@ -29,8 +24,8 @@ export default {
   },
   components: {
     tracklist: TracklistComponent,
-    styles: StylesComponent,
-    ytvideos: YoutubeComponent
+    ytvideos: YoutubeComponent,
+    releasewidget: ReleaseComponent
   },
   created () {
     getRandomDiscogsRelease()
