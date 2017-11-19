@@ -1,14 +1,12 @@
 <template>
   <div id='tracklist'>
     <h1>Tracklist</h1>
-    <section class='tracks' v-for="track in tracks" :key="track.position">
-      <h2>
+      <h2 class='track' v-for="track in tracks" :key="track.position">
         {{track.title}}
         <span v-if="track.duration">
           ({{track.duration}})
         </span>
       </h2>
-    </section>
   </div>
 </template>
 
@@ -21,9 +19,18 @@ export default {
 
 <style scoped>
 #tracklist {
+  background-color: #e8e8e8;
   border-radius: 10px;
-  background-color: #e4e3e3;
+  padding: 30px 50px;
   text-align: center;
-  padding: 10px 30px;
+}
+.track {
+  margin: 0px 0px;
+  font-weight: 400;
+  text-align: start;
+}
+h1 {
+  font-weight: 500;
+  margin: 0px 0px 5px 0px;
 }
 </style>

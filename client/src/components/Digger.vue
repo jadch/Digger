@@ -2,8 +2,8 @@
   <div id='random'>
     <h1>Digger</h1>
     <div v-if="release" class='main'>
-      <releasewidget :release="release"></releasewidget>
-      <tracklist :tracks="release.tracklist"></tracklist>
+      <releasewidget :release="release" class='release'></releasewidget>
+      <tracklist :tracks="release.tracklist" class='tracklist'></tracklist>
     </div>
     <ytvideos v-if="videos" :videos="videos"></ytvideos>
   </div>
@@ -46,14 +46,21 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: #2196f3;
 }
 .main {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+.release {
+  margin: 0px 50px;
+  height: fit-content;
+}
 h1 {
   font-size: 3em;
+  color: #ffffff;
+  align-self: start;
+  margin: 20px 0px 30px 50px;
 }
 </style>

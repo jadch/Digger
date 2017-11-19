@@ -1,8 +1,7 @@
 <template>
   <div id='styles'>
-    <h1>Styles</h1>
     <section class='styles'>
-      <p v-for="style in styles" :key="style">{{style}}</p>
+      <p v-for="style in styles" :key="style" class='tag'>{{style}}</p>
     </section>
   </div>
 </template>
@@ -26,10 +25,16 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.tag {
+  margin: 0px 15px;
+  padding: 5px 10px;
+  border-radius: 11px;
+  background-color: #8BC34A;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #ffffff;
+}
 h1 {
   margin: 0px;
-}
-p {
-  margin: 0px 15px;
 }
 </style>
