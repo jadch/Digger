@@ -26,6 +26,7 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  color: #0e0e0e;
  }
  h1 {
   font-weight: 500;

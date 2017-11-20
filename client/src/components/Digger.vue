@@ -1,6 +1,6 @@
 <template>
   <div id='random'>
-    <h1>Digger</h1>
+    <navbar></navbar>
     <release v-if="release" :release="release" class='release'></release>
     <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
     <novideo v-if="release && !videos" class='no-video'></novideo>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import NavBar from './tinyComponents/NavBar'
 import ReleaseTitle from './tinyComponents/ReleaseTitle'
 import TracklistComponent from './tinyComponents/TracklistComponent'
 import YoutubeComponent from './tinyComponents/YoutubeComponent'
@@ -28,7 +29,8 @@ export default {
     tracklist: TracklistComponent,
     ytvideos: YoutubeComponent,
     release: ReleaseTitle,
-    novideo: NoVideo
+    novideo: NoVideo,
+    navbar: NavBar
   },
   created () {
     getRandomDiscogsRelease()
@@ -57,16 +59,10 @@ export default {
   justify-content: center;
 }
 .release {
-  margin: 0px 50px;
+  margin: 40px 50px 0px 50px;
   height: fit-content;
 }
 .videos {
   margin: 50px 0px;
-}
-h1 {
-  font-size: 3em;
-  color: #ffffff;
-  align-self: start;
-  margin: 20px 0px 30px 50px;
 }
 </style>
