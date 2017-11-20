@@ -1,6 +1,7 @@
 <template>
   <div id='random'>
     <navbar></navbar>
+    <div v-on:click="refresh">Refresh release</div>
     <release v-if="release" :release="release" class='release'></release>
     <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
     <novideo v-if="release && !videos" class='no-video'></novideo>
@@ -38,8 +39,21 @@ export default {
         this.release = release
         if ("videos" in release) {
           this.videos = release.videos
+        } else {
+          this.videos = null
         }
       })
+  },
+  methods: {
+    refresh: function () {
+      getRandomDiscogsRelease()
+        .then(release => {
+          this.release = release
+          if ("videos" in release) {
+            this.videos = release.videos
+          }
+        })
+    }
   }
 }
 </script>
