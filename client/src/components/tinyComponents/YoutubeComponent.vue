@@ -2,6 +2,7 @@
   <div id='videos'>
     <iframe width="420" height="315" :src="currentURL"></iframe>    
     <section class='player' >
+      <h2>Available Youtube Videos</h2>
       <div v-for="(video, index) in videos" :key="video.uri" v-on:click="changeURL(index)">
         {{video.title}}
       </div>
@@ -46,5 +47,13 @@ export default {
 }
 .player {
   text-align: start;
+  margin: 0px 0px 0px 50px;
+  font-size: 1.4em;
+  font-weight: 400;
+}
+h2 {
+  margin: 0px 0px 10px 0px;
+  font-size: 1.5em;
+  font-weight: 500;
 }
 </style>
