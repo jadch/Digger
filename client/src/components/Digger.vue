@@ -1,17 +1,17 @@
 <template>
   <div id='random'>
     <h1>Digger</h1>
+    <release v-if="release" :release="release" class='release'></release>
     <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
     <novideo v-if="release && !videos" class='no-video'></novideo>
     <div v-if="release" class='main'>
-      <releasewidget :release="release" class='release'></releasewidget>
       <tracklist :tracks="release.tracklist" class='tracklist'></tracklist>
     </div>
   </div>
 </template>
 
 <script>
-import ReleaseComponent from './tinyComponents/ReleaseComponent'
+import ReleaseTitle from './tinyComponents/ReleaseTitle'
 import TracklistComponent from './tinyComponents/TracklistComponent'
 import YoutubeComponent from './tinyComponents/YoutubeComponent'
 import NoVideo from './tinyComponents/NoVideo'
@@ -27,7 +27,7 @@ export default {
   components: {
     tracklist: TracklistComponent,
     ytvideos: YoutubeComponent,
-    releasewidget: ReleaseComponent,
+    release: ReleaseTitle,
     novideo: NoVideo
   },
   created () {
