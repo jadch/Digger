@@ -36,13 +36,7 @@ export default {
     navbar: NavBar
   },
   created () {
-    getRandomDiscogsRelease()
-      .then(release => {
-        this.release = release
-        if ("videos" in release) {
-          this.videos = release.videos
-        }
-      })
+    this.refresh()
   },
   methods: {
     refresh: function () {
