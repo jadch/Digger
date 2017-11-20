@@ -1,8 +1,7 @@
 <template>
   <section class='release'>
     <h1>{{release.title}}</h1>
-    <p>by</p>
-    <h2>{{release.artists[0].name}}</h2>
+    <h2> {{release.artists[0].name}}</h2>
     <article>
       <h3 v-if="release.year !== 0">Released in {{release.year}}</h3>
       <styles :styles="release.styles" class='styles'></styles>
@@ -30,18 +29,16 @@ export default {
  }
  h1 {
   font-weight: 500;
-  font-size: 2.4em;
+  font-size: 2.8em;
   margin: 0px 0px 5px 0px;
  }
 h2 {
   font-weight: 500;
-  font-size: 2.1em;
+  font-size: 2.4em;
   margin: 5px 0px 0px 0px;
  }
- p {
-  margin: 0px;
-  font-weight: 500;
-  font-size: 1.7em;
+ h2 span {
+   font-weight: 400;
  }
  h3 {
   margin: 22px 0px;

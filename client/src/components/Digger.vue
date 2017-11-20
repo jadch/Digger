@@ -4,9 +4,9 @@
     <release v-if="release" :release="release" class='release'></release>
     <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
     <novideo v-if="release && !videos" class='no-video'></novideo>
-    <div v-if="release" class='main'>
+    <!-- <div v-if="release" class='main'>
       <tracklist :tracks="release.tracklist" class='tracklist'></tracklist>
-    </div>
+    </div> -->
   </div>
 </template>
 
