@@ -50,9 +50,11 @@ export default {
       this.videos = null
       getRandomDiscogsRelease()
         .then(release => {
-          this.release = release
           if ("videos" in release) {
+            this.release = release
             this.videos = release.videos
+          } else {
+            this.refresh()
           }
         })
     }
@@ -67,7 +69,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #2196f3;
+  background-color: #4fb1ff;
 }
 .main {
   display: flex;

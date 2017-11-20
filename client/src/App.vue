@@ -13,6 +13,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Raleway:900');
 body {
   margin: 0px;
 }

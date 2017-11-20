@@ -26,7 +26,9 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: #0e0e0e;
+  /* color: #0e0e0e; */
+  color: #1b1a1a;
+  font-family: 'Raleway', sans-serif;
  }
  h1 {
   font-weight: 500;
@@ -54,4 +56,7 @@ h2 {
  .styles {
   margin: 20px 0px;
  }
+
+/* font-family: 'Khula', sans-serif;
+font-family: 'Raleway', sans-serif; */
 </style>

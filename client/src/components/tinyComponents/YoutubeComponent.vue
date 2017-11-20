@@ -51,6 +51,9 @@ export default {
   font-size: 1.4em;
   font-weight: 400;
 }
+.player div {
+  cursor: pointer;
+}
 h2 {
   margin: 0px 0px 10px 0px;
   font-size: 1.5em;
