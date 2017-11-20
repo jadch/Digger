@@ -65,4 +65,7 @@ export default {
 .videos {
   margin: 50px 0px;
 }
+.no-video {
+  margin-top: 60px;
+}
 </style>
