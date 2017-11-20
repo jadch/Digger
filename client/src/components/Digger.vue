@@ -1,13 +1,13 @@
 <template>
   <div id='random'>
     <navbar></navbar>
-    <div v-on:click="refresh">Refresh release</div>
     <release v-if="release" :release="release" class='release'></release>
     <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
     <novideo v-if="release && !videos" class='no-video'></novideo>
     <!-- <div v-if="release" class='main'>
       <tracklist :tracks="release.tracklist" class='tracklist'></tracklist>
     </div> -->
+    <div v-on:click="refresh" id='refresh'>Refresh release</div>
   </div>
 </template>
 
@@ -39,13 +39,13 @@ export default {
         this.release = release
         if ("videos" in release) {
           this.videos = release.videos
-        } else {
-          this.videos = null
         }
       })
   },
   methods: {
     refresh: function () {
+      this.release = null
+      this.videos = null
       getRandomDiscogsRelease()
         .then(release => {
           this.release = release
@@ -81,5 +81,11 @@ export default {
 }
 .no-video {
   margin-top: 60px;
+}
+#refresh {
+  position: absolute;
+  left: 7vw;
+  top: 65vh;
+  background-color: yellowgreen;
 }
 </style>
