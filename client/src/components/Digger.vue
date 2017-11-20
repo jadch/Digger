@@ -7,7 +7,9 @@
     <!-- <div v-if="release" class='main'>
       <tracklist :tracks="release.tracklist" class='tracklist'></tracklist>
     </div> -->
-    <div v-on:click="refresh" id='refresh'>Refresh release</div>
+    <div v-on:click="refresh" id='refresh'>
+      <img src="../assets/refresh.svg" alt="Refresh">
+    </div>
   </div>
 </template>
 
@@ -83,9 +85,21 @@ export default {
   margin-top: 60px;
 }
 #refresh {
+  width: 55px;
+  height: 55px;
   position: absolute;
   left: 7vw;
-  top: 65vh;
-  background-color: yellowgreen;
+  top: 35vh;
+  background-color: #8BC34A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
+}
+img {
+  width: 38px;
+  margin-left: 3px;
 }
 </style>
