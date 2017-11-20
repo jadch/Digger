@@ -2,9 +2,9 @@
   <div id='videos'>
     <iframe width="420" height="315" :src="currentURL"></iframe>    
     <section class='player' >
-      <p v-for="video in videos" :key="video.uri">
+      <div v-for="(video, index) in videos" :key="video.uri" v-on:click="changeURL(index)">
         {{video.title}}
-      </p>
+      </div>
     </section>
   </div>
 </template>
@@ -27,6 +27,11 @@ export default {
     },
     currentURL: function () {
       return this.urls[this.index]
+    }
+  },
+  methods: {
+    changeURL: function (index) {
+      this.index = index
     }
   }
 }
