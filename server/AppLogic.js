@@ -9,7 +9,7 @@ export function getDiscogsRelease(id) {
   return discogs.get(`masters/${id}`)
     .then(response => response.data)
     .catch((error) => {
-      console.error('Error getting master release, ', error);
+      console.error(`Error getting master release ID ${id}, `, error);
     });
 }
 

@@ -1,5 +1,6 @@
 require('import-export');
 require('./AppLogic.js');
+require('dotenv').config();
 
 const express = require('express');
 const logger = require('morgan');
@@ -7,8 +8,13 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 const app = express();
+
+// Configuring database
+// mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
+mongoose.connect('mongodb://localhost/digger', { useMongoClient: true });
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
