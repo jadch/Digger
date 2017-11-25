@@ -1,10 +1,10 @@
 <template>
   <div id='videos'>
-    <iframe width="420" height="315" :src="currentURL"></iframe>    
+    <iframe width="400" height="250" :src="currentURL"></iframe>    
     <section class='player' >
-      <h2>Available Youtube Videos</h2>
-      <div v-for="(video, index) in videos" :key="video.uri" v-on:click="changeURL(index)">
-        {{video.title}}
+      <div v-for="(video, index) in videos" :key="video.uri" v-on:click="changeURL(index)" class='video'>
+        <img src="../../assets/youtube.svg" alt="Youtube">
+        <p>{{video.title}}</p>
       </div>
     </section>
   </div>
@@ -54,9 +54,18 @@ export default {
 .player div {
   cursor: pointer;
 }
-h2 {
-  margin: 0px 0px 10px 0px;
-  font-size: 1.5em;
+.video {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+img {
+  height: 35px;
+  margin-right: 10px;
+}
+p {
+  margin: 5px 0px;
   font-weight: 500;
 }
 </style>
