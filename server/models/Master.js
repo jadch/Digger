@@ -14,14 +14,7 @@ const masterSchema = new Schema({
   }],
   title: String,
   year: Number,
-  tracklist: [{
-    duration: String,
-    position: String,
-    type: String,
-    title: String,
-  }],
   main_release: Number,
-  num_for_sale: Number,
   data_quality: String,
 });
 
