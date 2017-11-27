@@ -16,10 +16,12 @@
     "express": "~4.15.2",
     "import-export": "^1.0.1",
     "jade": "~1.11.0",
+    "line-by-line": "^0.1.5",
     "mongoose": "^4.13.5",
     "morgan": "~1.8.1",
     "nodemon": "^1.12.1",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.2",
