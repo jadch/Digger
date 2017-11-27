@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["airbnb", "plugin:vue/essential"],
+  extends: ["airbnb", "plugin:vue/base"],
   parser: "babel-eslint",
   env: {
     browser: true,
