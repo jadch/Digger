@@ -1,12 +1,6 @@
 <template>
   <div id='videos'>
-    <iframe width="400" height="250" :src="currentURL"></iframe>
-    <section class='player' >
-      <div v-for="(video, index) in videos" :key="video.uri" v-on:click="changeURL(index)" class='video'>
-        <img src="../../assets/youtube.svg" alt="Youtube">
-        <p>{{video.title}}</p>
-      </div>
-    </section>
+    <iframe width="750" height="450" :src="url"></iframe>
   </div>
 </template>
 
@@ -15,25 +9,16 @@ export default {
   name: 'YoutubeComponent',
   data () {
     return {
-      index: 0
+      url: null,
     }
   },
   props: ['videos'],
-  computed: {
-    urls: function () {
-      return this.videos.map(video => {
-        let ID = video.uri.slice(video.uri.indexOf('?v=') + 3)
-        return 'https://www.youtube.com/embed/' + ID
-      })
-    },
-    currentURL: function () {
-      return this.urls[this.index]
-    }
-  },
-  methods: {
-    changeURL: function (index) {
-      this.index = index
-    }
+  created () {
+    let url = 'https://www.youtube.com/embed/VIDEO_ID?playlist=';
+    this.videos.forEach((video, index) => {
+      url += `${video.uri.slice(video.uri.indexOf('?v=') + 3)},`
+    })
+    this.url = url
   }
 }
 </script>
@@ -66,5 +51,9 @@ img {
 p {
   margin: 5px 0px;
   font-weight: 500;
+}
+iframe {
+  /*width: 50vw;*/
+  /*height: 50vh;*/
 }
 </style>

@@ -37,7 +37,7 @@ export default {
   margin: 0px 0px 0px 0px;
  }
  h3 {
-  margin: 22px 0px;
+  margin: 15px 0px;
   font-weight: 200;
   font-size: 1.3em;
   font-style: italic;
@@ -47,6 +47,6 @@ export default {
    flex-direction: row;
  }
  .styles {
-  margin: 20px 0px;
+  margin: 13px 0px;
  }
 </style>

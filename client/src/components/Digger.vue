@@ -72,12 +72,14 @@ export default {
   justify-content: center;
 }
 .release {
-  margin: 50px 0px 50px 50px;
+  margin: 30px 0px 50px 50px;
   height: fit-content;
   align-self: flex-start;
 }
 .tracklist {
   min-width: 400px;
+  margin: 0px 50px 0px 0px;
+  padding: 10px 30px 20px 30px;
 }
 .videos {
   margin: 0px 0px;
