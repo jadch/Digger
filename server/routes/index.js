@@ -1,6 +1,7 @@
 import { getRandomDiscogsRelease, getDiscogsRelease } from '../AppLogic';
 
 const express = require('express');
+const Master = require('../models/Master');
 
 const router = express.Router();
 
@@ -29,6 +30,18 @@ router.get('/random', (req, res) => {
     })
     .catch((error) => {
       console.error('Error fetching a random release, ', error);
+    });
+});
+
+router.post('/filter-random', (req, res) => {
+  const { style } = req.body;
+  Master.find({ styles: style })
+    .then((releases) => {
+      const rnd = Math.floor(Math.random() * releases.length);
+      res.json(releases[rnd]);
+    })
+    .catch((error) => {
+      console.error('Error fetching release, ', error);
     });
 });
 
