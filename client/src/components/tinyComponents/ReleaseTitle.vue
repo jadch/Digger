@@ -1,7 +1,10 @@
 <template>
   <section class='release'>
-    <h1>{{release.title}}</h1>
-    <h2> {{release.artists[0].name}}</h2>
+    <h1>
+      {{release.title}}
+      -
+      <span class='artist'> {{release.artists[0].name}}</span>
+    </h1>
     <article>
       <h3 v-if="release.year !== 0">Released in {{release.year}}</h3>
       <styles :styles="release.styles" class='styles'></styles>
@@ -26,22 +29,12 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* color: #0e0e0e; */
   color: #1b1a1a;
-  font-family: 'Raleway', sans-serif;
  }
  h1 {
-  font-weight: 500;
-  font-size: 2.8em;
-  margin: 0px 0px 5px 0px;
- }
-h2 {
-  font-weight: 500;
-  font-size: 2.4em;
-  margin: 5px 0px 0px 0px;
- }
- h2 span {
-   font-weight: 400;
+  font-weight: 600;
+  font-size: 2em;
+  margin: 0px 0px 0px 0px;
  }
  h3 {
   margin: 22px 0px;
@@ -56,7 +49,4 @@ h2 {
  .styles {
   margin: 20px 0px;
  }
-
-/* font-family: 'Khula', sans-serif;
-font-family: 'Raleway', sans-serif; */
 </style>

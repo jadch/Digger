@@ -1,6 +1,6 @@
 <template>
   <div id='videos'>
-    <iframe width="400" height="250" :src="currentURL"></iframe>    
+    <iframe width="400" height="250" :src="currentURL"></iframe>
     <section class='player' >
       <div v-for="(video, index) in videos" :key="video.uri" v-on:click="changeURL(index)" class='video'>
         <img src="../../assets/youtube.svg" alt="Youtube">
@@ -41,13 +41,12 @@ export default {
 <style scoped>
 #videos {
   text-align: center;
-  padding: 10px 30px;
   display: flex;
   flex-direction: row;
 }
 .player {
   text-align: start;
-  margin: 0px 0px 0px 50px;
+  margin: 0px 0px 0px 25px;
   font-size: 1.4em;
   font-weight: 400;
 }

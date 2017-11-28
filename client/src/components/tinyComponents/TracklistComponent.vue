@@ -21,16 +21,17 @@ export default {
 #tracklist {
   background-color: #d1ddea;
   border-radius: 10px;
-  padding: 30px 50px;
   text-align: center;
 }
 .track {
-  margin: 0px 0px;
-  font-weight: 400;
+  margin: 0px 2px;
+  font-weight: 500;
+  font-size: 1.3em;
   text-align: start;
 }
 h1 {
   font-weight: 500;
-  margin: 0px 0px 5px 0px;
+  font-size: 1.9em;
+  margin: 0px 0px 15px 0px;
 }
 </style>

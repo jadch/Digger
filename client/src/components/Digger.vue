@@ -2,14 +2,14 @@
   <div id='random'>
     <navbar></navbar>
     <release v-if="release" :release="release" class='release'></release>
-    <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
-    <novideo v-if="release && !videos" class='no-video'></novideo>
-    <!-- <div v-if="release" class='main'>
-      <tracklist :tracks="release.tracklist" class='tracklist'></tracklist>
-    </div> -->
-    <div v-on:click="refresh" id='refresh'>
+    <section class='main'>
+      <tracklist v-if="release" :tracks="release.tracklist" class='tracklist'></tracklist>
+      <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
+      <novideo v-if="release && !videos" class='no-video'></novideo>
+    </section>
+    <!-- <div v-on:click="refresh" id='refresh'>
       <img src="../assets/refresh.svg" alt="Refresh">
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -63,19 +63,24 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #4fb1ff;
+  background-color: #f4f4f4;
 }
 .main {
+  width: 95vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .release {
-  margin: 40px 50px 0px 50px;
+  margin: 50px 0px 50px 50px;
   height: fit-content;
+  align-self: flex-start;
+}
+.tracklist {
+  min-width: 400px;
 }
 .videos {
-  margin: 50px 0px;
+  margin: 0px 0px;
 }
 .no-video {
   margin-top: 60px;
