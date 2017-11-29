@@ -1,6 +1,10 @@
 <template>
   <div id='random'>
-    <navbar></navbar>
+    <div class='navbar'>
+      <div class='title'>Digger</div>
+      <img src="../assets/vinyl.svg" alt="Logo">
+      <input class='filter'>
+    </div>
     <release v-if="release" :release="release" class='release'></release>
     <section class='main'>
       <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
@@ -16,7 +20,6 @@
 </template>
 
 <script>
-import NavBar from './tinyComponents/NavBar'
 import ReleaseTitle from './tinyComponents/ReleaseTitle'
 import TracklistComponent from './tinyComponents/TracklistComponent'
 import YoutubeComponent from './tinyComponents/YoutubeComponent'
@@ -27,7 +30,8 @@ export default {
   data () {
     return {
       release: null,
-      videos: null
+      videos: null,
+      genres: null,
     }
   },
   components: {
@@ -35,7 +39,6 @@ export default {
     ytvideos: YoutubeComponent,
     release: ReleaseTitle,
     novideo: NoVideo,
-    navbar: NavBar
   },
   created () {
     this.refresh()
@@ -107,5 +110,41 @@ export default {
 img {
   width: 38px;
   margin-left: 3px;
+}
+/* Navbar styles */
+.navbar {
+  width: 100vw;
+  height: 63px;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  padding: 9px 0px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 4px 6px 0px rgba(95, 95, 95, 0.2);
+}
+.navbar .title {
+  font-size: 2.1em;
+  font-family: 'Raleway', sans-serif;
+  color: #1f1f1f;
+  align-self: start;
+  margin: 0px 0px 0px 16px;
+  font-weight: 600;
+}
+.navbar img {
+  width: 38px;
+  margin: 7px 0px 1px 6px;
+}
+.filter {
+  align-self: center;
+  margin-left: 60px;
+  height: 30px;
+  width: 250px;
+  border-radius: 16px;
+  border: none;
+  /* text */
+  font-size: 1.7em;
+  font-weight: 200;
+  padding: 5px 0px 5px 30px;
+  outline: none;
 }
 </style>
