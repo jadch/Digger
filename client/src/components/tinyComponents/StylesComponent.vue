@@ -26,11 +26,11 @@ export default {
   flex-wrap: wrap;
 }
 .tag {
-  margin: 0px 15px;
+  margin: 0px 10px;
   padding: 5px 10px;
   border-radius: 11px;
   background-color: #8BC34A;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 600;
   color: #ffffff;
 }

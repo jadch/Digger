@@ -3,9 +3,11 @@
     <navbar></navbar>
     <release v-if="release" :release="release" class='release'></release>
     <section class='main'>
-      <tracklist v-if="release" :tracks="release.tracklist" class='tracklist'></tracklist>
       <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
       <novideo v-if="release && !videos" class='no-video'></novideo>
+    </section>
+    <section class='main'>
+      <tracklist v-if="release" :tracks="release.tracklist" class='tracklist'></tracklist>
     </section>
     <!-- <div v-on:click="refresh" id='refresh'>
       <img src="../assets/refresh.svg" alt="Refresh">
@@ -66,23 +68,24 @@ export default {
   background-color: #f4f4f4;
 }
 .main {
-  width: 95vw;
+  margin: 30px 0px 0px 0px;
+  align-self: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .release {
-  margin: 30px 0px 50px 50px;
+  margin: 30px 0px 0px 0px;
   height: fit-content;
-  align-self: flex-start;
+  align-self: center;
 }
 .tracklist {
-  min-width: 400px;
-  margin: 0px 50px 0px 0px;
-  padding: 10px 30px 20px 30px;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 30px 20px 0px;
+  align-self: start;
 }
 .videos {
-  margin: 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
 .no-video {
   margin-top: 60px;

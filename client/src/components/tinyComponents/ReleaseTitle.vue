@@ -33,13 +33,13 @@ export default {
  }
  h1 {
   font-weight: 600;
-  font-size: 2em;
-  margin: 0px 0px 0px 0px;
+  font-size: 1.9em;
+  margin: 0px 0px 5px 0px;
  }
  h3 {
   margin: 15px 0px;
   font-weight: 200;
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-style: italic;
 }
  article {
@@ -47,6 +47,6 @@ export default {
    flex-direction: row;
  }
  .styles {
-  margin: 13px 0px;
+  margin: 11px 0px;
  }
 </style>
