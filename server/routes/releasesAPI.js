@@ -5,11 +5,6 @@ const Master = require('../models/Master');
 
 const router = express.Router();
 
-// Home Page
-router.get('/', (req, res) => {
-  res.json({ all: 'good' });
-});
-
 // Get a Discogs master release, given ID
 router.get('/release/:id', (req, res) => {
   const id = req.params.id.toString();
@@ -18,7 +13,10 @@ router.get('/release/:id', (req, res) => {
       res.json(response);
     })
     .catch((error) => {
-      console.error('Error fetching release, ', error);
+      res.json({
+        error,
+        errorMessage: 'Something went wrong while fetching the release, try again',
+      });
     });
 });
 
@@ -29,7 +27,10 @@ router.get('/random', (req, res) => {
       res.json(response);
     })
     .catch((error) => {
-      console.error('Error fetching a random release, ', error);
+      res.json({
+        error,
+        errorMessage: 'Something went wrong while fetching the release, try again',
+      });
     });
 });
 
@@ -41,7 +42,10 @@ router.post('/filter-random', (req, res) => {
       res.json(releases[rnd]);
     })
     .catch((error) => {
-      console.error('Error fetching release, ', error);
+      res.json({
+        error,
+        errorMessage: 'Something went wrong while fetching the release, try again',
+      });
     });
 });
 

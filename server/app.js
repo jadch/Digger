@@ -6,7 +6,7 @@ const express = require('express');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const index = require('./routes/index');
+const index = require('./routes/releasesAPI');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
