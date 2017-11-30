@@ -15,6 +15,7 @@
     </section>
     <section class='main'>
       <tracklist v-if="release" :tracks="release.tracklist" class='tracklist'></tracklist>
+      <info v-if="release" :release="release" class='info'></info>
     </section>
 
   </div>
@@ -25,7 +26,8 @@ import ReleaseTitle from './tinyComponents/ReleaseTitle';
 import TracklistComponent from './tinyComponents/TracklistComponent';
 import YoutubeComponent from './tinyComponents/YoutubeComponent';
 import NoVideo from './tinyComponents/NoVideo';
-import { getRandomDiscogsRelease } from '../../api';
+import ReleaseInfo from './tinyComponents/ReleaseInfo';
+import { getRandomReleaseWithStyle } from '../../api';
 import { mapState } from 'vuex';
 export default {
   name: 'Digger',
@@ -40,16 +42,16 @@ export default {
     ytvideos: YoutubeComponent,
     release: ReleaseTitle,
     novideo: NoVideo,
+    info: ReleaseInfo,
   },
   created () {
     this.refresh();
-    // console.log('Styles, ', this.styles);
   },
   methods: {
     refresh: function () {
       this.release = null
       this.videos = null
-      getRandomDiscogsRelease()
+      getRandomReleaseWithStyle(this.styles)
         .then(release => {
           if ("videos" in release) {
             this.release = release

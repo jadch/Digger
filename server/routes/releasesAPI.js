@@ -35,18 +35,33 @@ router.get('/random', (req, res) => {
 });
 
 router.post('/filter-random', (req, res) => {
-  const { style } = req.body;
-  Master.find({ styles: style })
-    .then((releases) => {
-      const rnd = Math.floor(Math.random() * releases.length);
-      res.json(releases[rnd]);
-    })
-    .catch((error) => {
-      res.json({
-        error,
-        errorMessage: 'Something went wrong while fetching the release, try again',
+  const { styles } = req.body;
+  if (styles.length > 0) {
+    // const style = styles[0];
+    Master.find({ styles: styles[0] })
+      .then((releases) => {
+        const rnd = Math.floor(Math.random() * releases.length);
+        res.json(releases[rnd]);
+      })
+      .catch((error) => {
+        res.json({
+          error,
+          errorMessage: 'Something went wrong while fetching the release, try again',
+        });
       });
-    });
+  } else {
+    Master.find()
+      .then((releases) => {
+        const rnd = Math.floor(Math.random() * releases.length);
+        res.json(releases[rnd]);
+      })
+      .catch((error) => {
+        res.json({
+          error,
+          errorMessage: 'Something went wrong while fetching the release, try again',
+        });
+      });
+  }
 });
 
 module.exports = router;

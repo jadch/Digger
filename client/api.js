@@ -21,8 +21,10 @@ export function getRandomDiscogsRelease() {
 
 // Function that gets a random release form ou database after filtering
 // by style
-export function getRandomReleaseWithStyle() {
-
+export function getRandomReleaseWithStyle(styles) {
+  return api.post('/filter-random', { styles })
+    .then(response => response.data)
+    .catch(error => ({ error }));
 }
 
 export default {
