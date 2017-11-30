@@ -1,7 +1,7 @@
 <template>
   <div id='styles'>
     <section class='styles'>
-      <p v-for="style in styles" :key="style" class='tag'>{{style}}</p>
+      <p v-for="style in styles"  @click="click" :key="style" class='tag'>{{style}}</p>
     </section>
   </div>
 </template>
@@ -9,7 +9,13 @@
 <script>
 export default {
   name: 'StylesComponent',
-  props: ['styles']
+  props: ['styles'],
+  methods: {
+    click : function (e) {
+      const style = e.target.innerHTML;
+      this.$store.dispatch('addStyleFilter', style)
+    }
+  }
 }
 </script>
 
