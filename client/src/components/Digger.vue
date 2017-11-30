@@ -3,7 +3,7 @@
     <div class='navbar'>
       <div class='title'>Digger</div>
       <img src="../assets/vinyl.svg" alt="Logo">
-      <input class='filter'>
+      <input class='filter' v-on:click="showFilter" placeholder="Filter albums by style">
       <div v-on:click="refresh" id='refresh'>
         <img src="../assets/refresh.svg" alt="Refresh">
       </div>
@@ -57,6 +57,9 @@ export default {
             this.refresh()
           }
         })
+    },
+    showFilter: function () {
+      console.log('filter!')
     }
   }
 }
@@ -125,7 +128,7 @@ export default {
   border-radius: 16px;
   border: none;
   /* text */
-  font-size: 1.7em;
+  font-size: 1.4em;
   font-weight: 200;
   padding: 5px 0px 5px 30px;
   outline: none;
