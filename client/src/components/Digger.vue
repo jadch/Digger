@@ -21,19 +21,19 @@
 </template>
 
 <script>
-import ReleaseTitle from './tinyComponents/ReleaseTitle'
-import TracklistComponent from './tinyComponents/TracklistComponent'
-import YoutubeComponent from './tinyComponents/YoutubeComponent'
-import NoVideo from './tinyComponents/NoVideo'
-import { getRandomDiscogsRelease } from '../../api'
+import ReleaseTitle from './tinyComponents/ReleaseTitle';
+import TracklistComponent from './tinyComponents/TracklistComponent';
+import YoutubeComponent from './tinyComponents/YoutubeComponent';
+import NoVideo from './tinyComponents/NoVideo';
+import { getRandomDiscogsRelease } from '../../api';
+import { mapState } from 'vuex';
 export default {
   name: 'Digger',
   data () {
     return {
       release: null,
       videos: null,
-      genres: null,
-    }
+    };
   },
   components: {
     tracklist: TracklistComponent,
@@ -42,7 +42,8 @@ export default {
     novideo: NoVideo,
   },
   created () {
-    this.refresh()
+    this.refresh();
+    // console.log('Styles, ', this.styles);
   },
   methods: {
     refresh: function () {
@@ -61,7 +62,10 @@ export default {
     showFilter: function () {
       console.log('filter!')
     }
-  }
+  },
+  computed: mapState({
+   styles: state => state.styles,
+ })
 }
 </script>
 
