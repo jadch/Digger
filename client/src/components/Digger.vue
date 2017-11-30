@@ -4,6 +4,9 @@
       <div class='title'>Digger</div>
       <img src="../assets/vinyl.svg" alt="Logo">
       <input class='filter'>
+      <div v-on:click="refresh" id='refresh'>
+        <img src="../assets/refresh.svg" alt="Refresh">
+      </div>
     </div>
     <release v-if="release" :release="release" class='release'></release>
     <section class='main'>
@@ -13,9 +16,7 @@
     <section class='main'>
       <tracklist v-if="release" :tracks="release.tracklist" class='tracklist'></tracklist>
     </section>
-    <!-- <div v-on:click="refresh" id='refresh'>
-      <img src="../assets/refresh.svg" alt="Refresh">
-    </div> -->
+
   </div>
 </template>
 
@@ -93,24 +94,6 @@ export default {
 .no-video {
   margin-top: 60px;
 }
-#refresh {
-  width: 55px;
-  height: 55px;
-  position: absolute;
-  left: 7vw;
-  top: 35vh;
-  background-color: #8BC34A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
-}
-img {
-  width: 38px;
-  margin-left: 3px;
-}
 /* Navbar styles */
 .navbar {
   width: 100vw;
@@ -146,5 +129,22 @@ img {
   font-weight: 200;
   padding: 5px 0px 5px 30px;
   outline: none;
+}
+#refresh {
+  width: 42px;
+  height: 42px;
+  margin-left: 25px;
+  background-color: #2196F3;
+  display: flex;
+  /*align-items: center;*/
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4);
+}
+#refresh img {
+  width: 30px;
+  margin-left: 3px;
+  margin-bottom: 5px;
 }
 </style>
