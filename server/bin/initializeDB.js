@@ -34,6 +34,16 @@ let lines = 0;
 let releases = 0;
 let errors = 0;
 
+// Function that takes in the video XML tag in the discogs dump
+// and returns an array of objects {title, uri}
+const videoify = (array) => {
+  if (!array) return [];
+  return array[0].video.map(video => ({
+    title: video.title[0],
+    uri: video.$.src,
+  }));
+};
+
 lineReader.on('line', (line) => {
   lines += 1;
   lineReader.pause(); // Pausing while the async stuff happens
@@ -55,12 +65,13 @@ lineReader.on('line', (line) => {
           anv: artist.anv[0],
           id: artist.id[0],
         })),
+        videos: videoify(release.videos),
         title: release.title[0],
         year: release.year[0],
         main_release: release.main_release[0],
         data_quality: release.data_quality[0],
       };
-
+      console.log(release);
       // Saving the master release to the db
       Master.findOneAndUpdate(
         { id: newMaster.id },
@@ -78,7 +89,7 @@ lineReader.on('line', (line) => {
     errors += 1;
     lineReader.resume();
   }
-  // console.log('In progress... ', lines, releases, errors);
+  console.log('In progress... ', lines, releases, errors);
 });
 
 lineReader.on('end', () => {

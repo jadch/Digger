@@ -1,6 +1,7 @@
 // Master Release model, modeled on Discog's Master Release.
 // So far, we don't include image URIs in our database.
 const mongoose = require('mongoose');
+const random = require('mongoose-simple-random');
 
 const { Schema } = mongoose;
 const masterSchema = new Schema({
@@ -8,7 +9,7 @@ const masterSchema = new Schema({
   styles: [String],
   genres: [String],
   videos: [{
-    name: String,
+    title: String,
     uri: String,
   }],
   artists: [{
@@ -21,6 +22,8 @@ const masterSchema = new Schema({
   main_release: Number,
   data_quality: String,
 });
+
+masterSchema.plugin(random);
 
 const Master = mongoose.model('Master', masterSchema);
 

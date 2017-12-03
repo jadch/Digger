@@ -50,17 +50,17 @@ router.post('/filter-random', (req, res) => {
         });
       });
   } else {
-    Master.find()
-      .then((releases) => {
-        const rnd = Math.floor(Math.random() * releases.length);
-        res.json(releases[rnd]);
-      })
-      .catch((error) => {
+    Master.findOneRandom((error, result) => {
+      if (error) {
+        console.log('error', error);
         res.json({
           error,
           errorMessage: 'Something went wrong while fetching the release, try again',
         });
-      });
+      }
+      console.log('REL', result);
+      res.json(result);
+    });
   }
 });
 
