@@ -8,6 +8,7 @@
     "test": "nyc mocha"
   },
   "dependencies": {
+    "aws-sdk": "^2.162.0",
     "axios": "^0.17.1",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
@@ -17,6 +18,7 @@
     "express": "~4.15.2",
     "import-export": "^1.0.1",
     "jade": "~1.11.0",
+    "jsonfile": "^4.0.0",
     "line-by-line": "^0.1.5",
     "mocha": "^4.0.1",
     "mongoose": "^4.13.5",
