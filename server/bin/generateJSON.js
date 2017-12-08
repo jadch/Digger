@@ -29,47 +29,51 @@ const videoify = (array) => {
   }));
 };
 
-lineReader.on('line', (line) => {
-  lines += 1;
-  lineReader.pause(); // Pausing while the async stuff happens
+function generateJSON() {
+  lineReader.on('line', (line) => {
+    lines += 1;
+    lineReader.pause(); // Pausing while the async stuff happens
 
-  if (line.indexOf('<master') !== -1 && line.indexOf('</master>') !== -1) {
-    // Great! the line represents a full release
-    xmlparser.parseString(line, (err, result) => {
-      if (err) {
-        errors += 1;
-        console.log('Error parsing the XML : ', err);
-      }
-      const release = JSON.parse(JSON.stringify(result.master));
-      const newMaster = {
-        id: release.$.id,
-        styles: release.styles ? release.styles[0].style : [],
-        genres: release.genres ? release.genres[0].genre : [],
-        artists: release.artists[0].artist.map(artist => ({
-          name: artist.name[0],
-          id: artist.id[0],
-        })),
-        videos: videoify(release.videos),
-        title: release.title[0],
-        year: release.year[0],
-        main_release: release.main_release[0],
-        data_quality: release.data_quality[0],
-      };
+    if (releases === 10000) return 'Done, 10 000 releases generated!';
 
-      // Adding the release to the JSON file
-      jsonfile.writeFile(outputFile, newMaster, { flag: 'a', EOL: ',\n' }, (error) => {
-        console.error(error);
-        releases += 1;
-        lineReader.resume();
+    if (line.indexOf('<master') !== -1 && line.indexOf('</master>') !== -1) {
+      // Great! the line represents a full release
+      xmlparser.parseString(line, (err, result) => {
+        if (err) {
+          errors += 1;
+          console.log('Error parsing the XML : ', err);
+        }
+        const release = JSON.parse(JSON.stringify(result.master));
+        const newMaster = {
+          id: release.$.id,
+          styles: release.styles ? release.styles[0].style : [],
+          genres: release.genres ? release.genres[0].genre : [],
+          artists: release.artists[0].artist.map(artist => ({
+            name: artist.name[0],
+            id: artist.id[0],
+          })),
+          videos: videoify(release.videos),
+          title: release.title[0],
+          year: release.year[0],
+          main_release: release.main_release[0],
+          data_quality: release.data_quality[0],
+        };
+
+        // Adding the release to the JSON file
+        jsonfile.writeFile(outputFile, newMaster, { flag: 'a', EOL: ',\n' }, (error) => {
+          console.error(error);
+          releases += 1;
+          lineReader.resume();
+        });
       });
-    });
-  } else {
-    errors += 1;
-    lineReader.resume();
-  }
-  console.log('In progress... ', lines, releases, errors);
-});
+    } else {
+      errors += 1;
+      lineReader.resume();
+    }
+    console.log('In progress... ', lines, releases, errors);
+  });
 
-lineReader.on('end', () => {
-  console.log(`DONE! lines:${lines} releases:${releases} errors:${errors}`);
-});
+  lineReader.on('end', () => `DONE! lines:${lines} releases:${releases} errors:${errors}`);
+}
+
+generateJSON();

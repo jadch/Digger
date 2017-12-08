@@ -8,7 +8,7 @@ AWS.config.update({
 
 const dynamodb = new AWS.DynamoDB();
 
-const params = {
+const paramsMasters = {
   TableName: 'Masters',
   KeySchema: [
     { AttributeName: 'id', KeyType: 'HASH' }, // Partition key
@@ -17,14 +17,36 @@ const params = {
     { AttributeName: 'id', AttributeType: 'S' },
   ],
   ProvisionedThroughput: {
-    ReadCapacityUnits: 22,
-    WriteCapacityUnits: 22,
+    ReadCapacityUnits: 5,
+    WriteCapacityUnits: 13,
+  },
+};
+
+const paramsGenres = {
+  TableName: 'Genres',
+  KeySchema: [
+    { AttributeName: 'id', KeyType: 'HASH' }, // Partition key
+  ],
+  AttributeDefinitions: [
+    { AttributeName: 'id', AttributeType: 'S' },
+  ],
+  ProvisionedThroughput: {
+    ReadCapacityUnits: 20,
+    WriteCapacityUnits: 12,
   },
 };
 
 
-// Creating Table
-dynamodb.createTable(params, (err, data) => {
+// Creating Tables
+dynamodb.createTable(paramsMasters, (err, data) => {
+  if (err) {
+    console.error('Unable to create table. Error JSON:', JSON.stringify(err, null, 2));
+  } else {
+    console.log('Created table. Table description JSON:', JSON.stringify(data, null, 2));
+  }
+});
+
+dynamodb.createTable(paramsGenres, (err, data) => {
   if (err) {
     console.error('Unable to create table. Error JSON:', JSON.stringify(err, null, 2));
   } else {
