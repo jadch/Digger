@@ -60,3 +60,4 @@ typings/
 # Discogs database
 *.xml
 data.json
+ElectronicReleases.json

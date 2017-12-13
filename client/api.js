@@ -9,6 +9,13 @@ const api = axios.create({
 });
 
 
+// Function that gets a main release from Discogs, given main release ID
+export function getMainReleaseFromDiscogs(id) {
+  return discogs.get(`releases/${id}`)
+    .then(response => response.data)
+    .catch(error => ({ error }));
+}
+
 // Function that gets a random Discogs master release
 export function getRandomDiscogsRelease() {
   // PS: Dicogs release IDs seem to be running from 113 to 1'268'960
@@ -28,6 +35,7 @@ export function getRandomReleaseWithStyle(styles) {
 }
 
 export default {
+  getMainReleaseFromDiscogs,
   getRandomDiscogsRelease,
   getRandomReleaseWithStyle,
 };
