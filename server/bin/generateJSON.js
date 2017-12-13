@@ -34,7 +34,7 @@ function generateJSON() {
     lines += 1;
     lineReader.pause(); // Pausing while the async stuff happens
 
-    if (releases === 10000) return 'Done, 10 000 releases generated!';
+    // if (releases === 400) return 'Done, 400 releases generated!';
 
     if (line.indexOf('<master') !== -1 && line.indexOf('</master>') !== -1) {
       // Great! the line represents a full release
