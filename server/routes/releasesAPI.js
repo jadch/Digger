@@ -1,4 +1,4 @@
-import { queryAlbumAtRow } from '../AzureQueries';
+import { queryAlbumAtRow, queryElectronicTableLength } from '../AzureQueries';
 
 const express = require('express');
 const sql = require('mssql');
@@ -22,14 +22,17 @@ const router = express.Router();
 // Gettings a random release from DynamoDb
 router.get('/getrandom', (req, res) => {
   sql.connect(config).then((pool) => {
-    const row = 1120;
-    queryAlbumAtRow(pool, row).then((release) => {
-      res.json(release);
-      sql.close();
+    queryElectronicTableLength(pool).then((maxLen) => {
+      const row = Math.floor(Math.random() * maxLen);
+      queryAlbumAtRow(pool, row).then((release) => {
+        res.json(release);
+        sql.close();
+      });
     });
   });
   sql.on('error', (err) => {
     res.json({ error: err, errorMessage: 'Something went wrong while fetching the release, please try again!' });
+    sql.close();
   });
 });
 
