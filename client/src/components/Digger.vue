@@ -27,7 +27,7 @@ import TracklistComponent from './tinyComponents/TracklistComponent';
 import YoutubeComponent from './tinyComponents/YoutubeComponent';
 import NoVideo from './tinyComponents/NoVideo';
 import ReleaseInfo from './tinyComponents/ReleaseInfo';
-import { getRandomReleaseWithStyle, getMainReleaseFromDiscogs } from '../../api';
+import { getMainReleaseFromDiscogs, getRandomDiscogsRelease } from '../../api';
 import { mapState } from 'vuex';
 export default {
   name: 'Digger',
@@ -51,26 +51,18 @@ export default {
     refresh: function () {
       this.release = null
       this.videos = null
-      getRandomReleaseWithStyle(this.styles)
-        .then(release => {
-          if ("videos" in release) {
-            this.release = release
-            this.videos = release.videos
-            this.getInfo(release.main_release)
-          } else {
-            this.refresh()
-          }
-        })
-    },
+      getRandomDiscogsRelease().then(release => {
+        console.log(release);
+        getMainReleaseFromDiscogs(release.MainReleaseID)
+        .then(main => {
+          console.log(main)
+          this.release = main;
+          this.videos = main.videos;
+        });
+    });
+  },
     showFilter: function () {
       console.log('filter!')
-    },
-    getInfo: function (mainReleaseID) {
-      console.log(mainReleaseID)
-      getMainReleaseFromDiscogs(mainReleaseID)
-        .then(release => {
-          console.log(release);
-        })
     },
   },
   computed: mapState({
