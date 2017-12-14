@@ -30,10 +30,6 @@ router.get('/getrandom', (req, res) => {
       });
     });
   });
-  sql.on('error', (err) => {
-    res.json({ error: err, errorMessage: 'Something went wrong while fetching the release, please try again!' });
-    sql.close();
-  });
 });
 
 
