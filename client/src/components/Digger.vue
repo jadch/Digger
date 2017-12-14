@@ -52,10 +52,8 @@ export default {
       this.release = null
       this.videos = null
       getRandomDiscogsRelease().then(release => {
-        console.log(release);
         getMainReleaseFromDiscogs(release.MainReleaseID)
         .then(main => {
-          console.log(main)
           this.release = main;
           this.videos = main.videos;
         });
