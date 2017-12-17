@@ -8,6 +8,7 @@
         <img src="../assets/refresh.svg" alt="Refresh">
       </div>
     </div>
+    <loading v-if="!release" class='loading'></loading>
     <release v-if="release" :release="release" class='release'></release>
     <section class='main'>
       <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
@@ -26,6 +27,7 @@ import ReleaseTitle from './tinyComponents/ReleaseTitle';
 import TracklistComponent from './tinyComponents/TracklistComponent';
 import YoutubeComponent from './tinyComponents/YoutubeComponent';
 import NoVideo from './tinyComponents/NoVideo';
+import Loading from './tinyComponents/Loading';
 import ReleaseInfo from './tinyComponents/ReleaseInfo';
 import { getMainReleaseFromDiscogs, getRandomDiscogsRelease } from '../../api';
 import { mapState } from 'vuex';
@@ -43,6 +45,7 @@ export default {
     release: ReleaseTitle,
     novideo: NoVideo,
     info: ReleaseInfo,
+    loading: Loading,
   },
   created () {
     this.refresh();
@@ -87,6 +90,11 @@ export default {
 }
 .release {
   margin: 30px 0px 0px 0px;
+  height: fit-content;
+  align-self: center;
+}
+.loading {
+  margin: 100px 0px 0px 0px;
   height: fit-content;
   align-self: center;
 }
