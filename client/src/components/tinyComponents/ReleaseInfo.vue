@@ -1,12 +1,12 @@
 <template>
   <section class='info'>
-    <p>Label: {{label}}</p>
-    <p>Catalogue Num: {{catno}}</p>
-    <p>Released: {{released}}</p>
-    <p>Country: {{release.country}}</p>
-    <p>Rated: {{rating}}</p>
-    <p v-if="stats">Want: {{stats.want}}</p>
-    <p v-if="stats">Have: {{stats.have}}</p>
+    <p>Label: <span> {{label}}</span></p>
+    <p>Released: <span> {{released}}</span></p>
+    <p>Country: <span> {{release.country}}</span></p>
+    <p>Rated: <span> {{rating}}</span></p>
+    <p v-if="stats">Want: <span> {{stats.want}}</span></p>
+    <p v-if="stats">Have: <span> {{stats.have}}</span></p>
+    <p>Catalogue Num: <span> {{catno}}</span></p>
   </section>
 </template>
 
@@ -48,22 +48,20 @@ export default {
 </script>
 
 <style scoped>
- .release {
+ .info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  color: #1b1a1a;
- }
- h1 {
-  font-weight: 600;
-  font-size: 1.9em;
-  margin: 0px 0px 5px 0px;
+  text-align: start;
+  font-size: 1.1em;
+  background-color: #a4cff4;
+  padding: 25px 30px;
+  border-radius: 20px;
  }
  p {
-   margin: 1px 5px;
+   margin: 0px;
+   font-weight: 100;
+ }
+ span {
    font-weight: 400;
-   font-size: 1.2em;
-   text-align: start;
  }
 </style>

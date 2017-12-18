@@ -10,15 +10,16 @@
     </div>
     <loading v-if="!release" class='loading'></loading>
     <release v-if="release" :release="release" class='release'></release>
-    <section class='main'>
-      <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
-      <novideo v-if="release && !videos" class='no-video'></novideo>
-    </section>
-    <section class='main'>
-      <tracklist v-if="release" :tracks="release.tracklist" class='tracklist'></tracklist>
-      <info v-if="release" :release="release" class='info'></info>
-    </section>
-
+    <div class='main'>
+      <section class='colA'>
+        <ytvideos v-if="videos" :videos="videos" class='videos'></ytvideos>
+        <novideo v-if="release && !videos" class='no-video'></novideo>
+      </section>
+      <section class='colB'>
+        <info v-if="release" :release="release" class='info'></info>
+        <tracklist v-if="release" :tracks="release.tracklist" class='tracklist'></tracklist>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -82,10 +83,20 @@ export default {
   background-color: #f4f4f4;
 }
 .main {
-  margin: 30px 0px 0px 0px;
-  align-self: center;
+  margin: 0px;
   display: flex;
   flex-direction: row;
+}
+.colA {
+  margin: 30px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.colB {
+  margin: 30px 0px 0px 100px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 .release {
