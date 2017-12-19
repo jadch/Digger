@@ -83,7 +83,7 @@ export default {
   background-color: #f4f4f4;
 }
 .main {
-  margin: 0px;
+  margin: 5px 0px 0px 0px;
   display: flex;
   flex-direction: row;
 }

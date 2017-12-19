@@ -19,19 +19,19 @@ export default {
 
 <style scoped>
 #tracklist {
-  /*background-color: #d1ddea;*/
-  /*border-radius: 10px;*/
+  padding: 25px 30px;
   text-align: start;
 }
 .track {
   margin: 1px 5px;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 1.2em;
   text-align: start;
 }
 h1 {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1.5em;
-  margin: 0px 0px 5px 0px;
+  margin: 0px 0px 10px 0px;
+  text-align: center;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <section class='info'>
-    <p>Label: <span> {{label}}</span></p>
-    <p>Released: <span> {{released}}</span></p>
-    <p>Country: <span> {{release.country}}</span></p>
-    <p>Rated: <span> {{rating}}</span></p>
-    <p v-if="stats">Want: <span> {{stats.want}}</span></p>
-    <p v-if="stats">Have: <span> {{stats.have}}</span></p>
-    <p>Catalogue Num: <span> {{catno}}</span></p>
+    <p>label: <span id='content'> {{label}}</span></p>
+    <p>released: <span id='content'> {{released}}</span></p>
+    <p>country: <span id='content'> {{release.country}}</span></p>
+    <p>rated: <span id='content'> {{rating}}</span></p>
+    <p v-if="stats">want: <span id='content'> {{stats.want}}</span></p>
+    <p v-if="stats">have: <span id='content'> {{stats.have}}</span></p>
+    <p>catalogue num: <span id='content'> {{catno}}</span></p>
   </section>
 </template>
 
@@ -52,16 +52,22 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: start;
-  font-size: 1.1em;
   background-color: #a4cff4;
   padding: 25px 30px;
   border-radius: 20px;
+  line-height: 19px;
  }
  p {
-   margin: 0px;
-   font-weight: 100;
- }
- span {
-   font-weight: 400;
+  font-size: 19.3px;
+  margin: 0px;
+  font-weight: 200;
+  font-family: Helvetica;
+  font-variant: small-caps;
+}
+#content {
+  margin-left: 1.5px;
+  font-size: 18px;
+  font-weight: 200;
+  font-variant: none;
  }
 </style>
