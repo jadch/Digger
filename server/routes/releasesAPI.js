@@ -3,6 +3,13 @@ import { queryAlbumAtRow, queryElectronicTableLength } from '../AzureQueries';
 const express = require('express');
 const sql = require('mssql');
 const dotenv = require('dotenv');
+const AWS = require('aws-sdk');
+
+// Configuring AWS
+AWS.config.update({
+  region: 'us-east-1',
+});
+const lambda = new AWS.Lambda();
 
 dotenv.load();
 
@@ -29,6 +36,25 @@ router.get('/getrandom', (req, res) => {
         sql.close();
       });
     });
+  });
+});
+
+// Getting a random release, with no filtering by styles
+router.get('/random', (req, res) => {
+  const params = {
+    FunctionName: 'digger-serverless-dev-fetchElectronicTableLength',
+    Payload: '',
+  };
+
+  lambda.invoke(params, (err, data) => {
+    if (err) {
+      res.json({
+        error: err,
+        errorMessage: 'Something went wrong while fetching the randome release',
+      });
+    }
+    const response = JSON.parse(data.Payload);
+    res.json(response);
   });
 });
 
