@@ -23,16 +23,11 @@ const config = {
 module.exports.fetchElectronicTableLength = (event, context, callback) => {
     new sql.ConnectionPool(config).connect().then(pool => {
       queryElectronicTableLength(pool).then(maxLen => {
-        const response = { length: maxLen }
+        callback(null, { length: maxLen });
         pool.close();
-        callback(null, response);
-        context.succeed();
       })
       }).catch(err => {
-        const response = {
-          error: err,
-        };
-        callback(null, response);
+        callback(null, { error: err });
         pool.close();
       })
 };
