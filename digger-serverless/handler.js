@@ -22,36 +22,32 @@ const config = {
 
 module.exports.fetchElectronicTableLength = (event, context, callback) => {
     new sql.ConnectionPool(config).connect().then(pool => {
-      queryElectronicTableLength(pool).then(maxLen => {
-        callback(null, { length: maxLen });
+      queryElectronicTableLength(pool).then(length => {
+        callback(null, { length });
         pool.close();
       })
-      }).catch(err => {
-        callback(null, { error: err });
+      }).catch(error => {
+        callback(null, { error });
         pool.close();
       })
 };
 
 module.exports.fetchRandomMasterID = (event, context, callback) => {
-  //
-  // new sql.ConnectionPool(config).connect().then(pool => {
-  //   queryElectronicTableLength(pool).then(maxLen => {
-  //     const response = { length: maxLen }
-  //     pool.close();
-  //     callback(null, response);
-  //     context.succeed();
-  //   })
-  //   }).catch(err => {
-  //     const response = {
-  //       error: err,
-  //     };
-  //     callback(null, response);
-  //     pool.close();
-  //   })
-
-  // const row = Math.floor(Math.random() * maxLen);
-  // queryAlbumAtRow(pool, row).then((release) => {
-  //   res.json(release);
-  //   pool.close();
-  // });
+  new sql.ConnectionPool(config).connect().then(pool => {
+    queryElectronicTableLength(pool).then(maxLen => {
+      const row = Math.floor(Math.random() * maxLen);
+      queryAlbumAtRow(pool, row).then((release) => {
+        callback(null, {
+          masterID: release.MasterID,
+          mainReleaseID: release.MainReleaseID,
+          year: release.Year,
+          title: release.Title,
+        });
+        pool.close();
+      });
+    })
+  }).catch(error => {
+    callback(null, { error });
+    pool.close();
+  })
 };

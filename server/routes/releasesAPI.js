@@ -42,7 +42,7 @@ router.get('/getrandom', (req, res) => {
 // Getting a random release, with no filtering by styles
 router.get('/random', (req, res) => {
   const params = {
-    FunctionName: 'digger-serverless-dev-fetchElectronicTableLength',
+    FunctionName: 'digger-serverless-dev-fetchRandomMasterID',
     Payload: '',
   };
 
