@@ -56,7 +56,7 @@ export default {
       this.release = null
       this.videos = null
       getRandomDiscogsRelease().then(release => {
-        getMainReleaseFromDiscogs(release.MainReleaseID)
+        getMainReleaseFromDiscogs(release.mainReleaseID)
         .then(main => {
           this.release = main;
           this.videos = main.videos;
